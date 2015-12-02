@@ -5,6 +5,5 @@ import numpy
 
 
 
-df = pd.DataFrame(pd.read_pickle("NY.p"))
+df = pd.DataFrame(pd.read_pickle("NY_min.p"))
 
-print()

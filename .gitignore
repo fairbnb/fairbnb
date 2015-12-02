@@ -56,5 +56,13 @@ docs/_build/
 # PyBuilder
 target/
 
+#git lfs
+.gitattributes
+
 # Pickle files
+<<<<<<< HEAD
 # *.p
+=======
+*.p
+
+>>>>>>> master
