@@ -100,5 +100,16 @@ def removeTooLate(df, date):
     return res
 
 
+def clearNotAvailables(df):
+    toPop = []
+    res = df.copy(deep=1)
+    for j, row in res.iterrows():
+        availability = row['availability']
+        if len(availability) == 0:
+            toPop.append(j)
+    res.drop(res.index[toPop],inplace=1)
+    return res
+
+
 def readPickle(path):
     return pd.DataFrame(pd.read_pickle(path))
