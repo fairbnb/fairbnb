@@ -1,17 +1,27 @@
 __author__ = 'Erez Levanon'
 
-from buildPickle import buildDB
 import pandas as pd
-from dateFuctions import printTime
+from dateFuctions import *
+from buildPickle import *
 
-df = pd.DataFrame(pd.read_pickle("NY_min.p"))
+df = readPickle('newNY_min.p')
 
-mystart = 1449014401
-myend = 1454371201
+count = 0
+for i, val in df.iterrows():
+    for j in val['availability']:
+        count += 1
+print(count)
 
-for i in df['availability']:
-    for j in i:
-        start = j['start']
-        end = j['end']
-        if not (end < mystart or start > myend):
-            print(printTime(j['start']) + " to " + printTime(j['end']))
+print('-----------------------------------------')
+
+ndf = removeTooEarly(df, 1449014401)
+ndf = removeTooLate(ndf, 1454976001)
+
+count = 0
+for i, val in ndf.iterrows():
+    for j in val['availability']:
+        count += 1
+print(count)
+
+
+printAllDates(ndf)

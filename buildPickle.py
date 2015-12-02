@@ -6,7 +6,7 @@ import json
 import pandas as pd
 import numpy
 
-def buildDB(lat = '40.758895', long = '-73.9829423', stime = '1449014401', etime = '1454371201' ,dbName = "temp.p"):
+def buildDB(lat = '40.758895', long = '-73.9829423',dbName = "temp.p"):
 
     moreResults = 1;
 
@@ -20,11 +20,9 @@ def buildDB(lat = '40.758895', long = '-73.9829423', stime = '1449014401', etime
     headers = { 'X-Mashape-Key' : xmashkey , 'Accept' : accept}
     values = {'latitude' : str(lat),
               'longitude' : str(long),
-              'etimestamp': str(etime),
               'maxdistance':'80',
               'page':str(page),
               'resultsperpage':'50',
-              'stimestamp':str(stime),
               'provider': 'airbnb'
               }
 
@@ -43,15 +41,13 @@ def buildDB(lat = '40.758895', long = '-73.9829423', stime = '1449014401', etime
             xmashkey = 'bFjnXwZZp5msh3AIkSIt8PDpsny3p18fuWtjsnDVIL0eN8gh27'
             accept = 'application/json'
             headers = { 'X-Mashape-Key' : xmashkey , 'Accept' : accept}
-            values = {'latitude' : '40.758895',
-                      'longitude' : '-73.9829423',
-                      'etimestamp': '1454371201',
-                      'maxdistance':'80',
-                      'page':str(page),
-                      'resultsperpage':'50',
-                      'stimestamp':'1449014401',
-                      'provider': 'airbnb'
-                      }
+            values = {'latitude' : str(lat),
+              'longitude' : str(long),
+              'maxdistance':'80',
+              'page':str(page),
+              'resultsperpage':'50',
+              'provider': 'airbnb'
+            }
 
             data = urllib.parse.urlencode(values)
             url = url + "?" + data;
@@ -66,3 +62,43 @@ def buildDB(lat = '40.758895', long = '-73.9829423', stime = '1449014401', etime
     finally:
         print(df.info())
         df.to_pickle(dbName)
+
+
+def cleanDataFrame(path, newPath):
+    df = pd.DataFrame(pd.read_pickle(path))
+    df.reset_index(inplace=1)
+    toDelete = ['attr', 'priceRange', 'photos', 'location', 'provider', 'amenities', 'reviews', 'latLng', 'itemStatus']
+    for i in toDelete:
+        df.pop(i)
+    df.to_pickle(newPath)
+    return df
+
+def removeTooEarly(df, date):
+    res = df.copy(deep=1)
+    for j, row in res.iterrows():
+        availability = row['availability']
+        toPop = []
+        for i in range(len(availability)):
+            if row['availability'][i]['end'] < date:
+                toPop.append(i)
+        toPop.reverse()
+        for k in toPop:
+            availability.pop(k)
+    return res
+
+def removeTooLate(df, date):
+    res = df.copy(deep=1)
+    for j, row in res.iterrows():
+        availability = row['availability']
+        toPop = []
+        for i in range(len(availability)):
+            if row['availability'][i]['end'] > date:
+                toPop.append(i)
+        toPop.reverse()
+        for k in toPop:
+            availability.pop(k)
+    return res
+
+
+def readPickle(path):
+    return pd.DataFrame(pd.read_pickle(path))
