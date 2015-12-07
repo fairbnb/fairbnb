@@ -87,6 +87,7 @@ jqxhr.always(function(data) {
 
         var inner = "";
         alert("hi5");
+        data = $.parseJSON(data);
         $.each(data,function(i, value)
         {
             alert("get request");
