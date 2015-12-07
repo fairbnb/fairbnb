@@ -192,8 +192,7 @@ def returnResultIds(results, graph):
             newDate = listing['date']
             newID = listing['id']
             if(lastID!=0):
-                result = {}
-                result['name':lastID, 'price':price, 'sdate':startDate, 'edate':newDate]
+                result = {'name':lastID, 'price':price, 'sdate':startDate, 'edate':newDate}
                 stops.append(result)
             lastID = newID
             startDate = newDate

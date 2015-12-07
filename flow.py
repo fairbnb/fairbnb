@@ -25,10 +25,11 @@ def userQuery(start_date, end_date):
     print("G")
     df.set_index('id', inplace=1)
     result = returnResultIds(result, my_graph)
+    print("H")
     for index, value in enumerate(result):
         row = df.loc[value]
-        imurl = row['photos']['large']
-        href = row['provider']['url']
+        imurl = row['photos'] = ['large']
+        href = row['provider'] = ['url']
         result[index]['imurl':imurl, 'href':href]
     print(result)
 
