@@ -2,8 +2,8 @@ from buildPickle import *
 from dateFuctions import *
 from graphBuilder import *
 
-BIG_DF = 'newNY.p'
-WORK_DF = 'newNY_min.p'
+BIG_DF = './static/data/newNY.p'
+WORK_DF = './static/data/newNY_min.p'
 
 
 def userQuery(start_date, end_date):
@@ -18,6 +18,8 @@ def userQuery(start_date, end_date):
     printResultPath(result, my_graph)
 
 
-start = 1449335766
-end = 1454198401
-userQuery(start + DAY, end)
+if __name__ == '__main__':
+    start = 1449496184
+    end = start + 60*DAY
+    userQuery(start + DAY, end)
+

@@ -6,6 +6,8 @@ import json
 import pandas as pd
 import numpy
 
+MAX_RESULTS = 15000
+
 def buildDB(lat = '40.758895', long = '-73.9829423',dbName = "./static/data/temp.p"):
 
     moreResults = 1;
@@ -54,7 +56,7 @@ def buildDB(lat = '40.758895', long = '-73.9829423',dbName = "./static/data/temp
             data = data.encode('ascii')
             req = urllib.request.Request(url , headers=headers)
             with urllib.request.urlopen(req) as response:
-                if count>=1700:
+                if count>=MAX_RESULTS:
                     break
                 batch = json.loads(response.read().decode('utf-8'))
                 moreResults =  len(batch['result'])
