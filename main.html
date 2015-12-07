@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DeliciouSeret</title>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css" type="text/css"/>
+    <script src="static/js/jquery-1.11.3.js"></script>
+    <link rel="stylesheet" href="static/css/mainStyle.css" type="text/css"/>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'/>
+
+</head>
+<body>
+<script src="static/js/bootstrap.min.js"></script>
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <h2 style="color: white;font-family:  'Pacifico', cursive;"><b>DeliciouSeret</b></h2>
+        </div>
+    </div>
+</div>
+
+<div id="headerwrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1>What would you<br/>
+                    like to eat?</h1>
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                        <input type="search" class="form-control" id="searchFood" placeholder="Search">
+                    </div>
+                    <button type="submit" id="submitSearch" class="btn btn-warning btn-lg btn-circle-lg">GO!</button>
+                </form>
+                <h3>need help?<br/>click <a id="suggestions" href="#bottom">here</a> for suggestions</h3>
+            </div>
+            <div style="position: absolute;right: 0; border:0;" class="col-lg-6">
+                <img id="fork" style="position: absolute;right: 0; border:0;" class="img-responsive" src="static/fork.png" alt="">
+            </div><!-- /col-lg-6 -->
+
+        </div><!-- /row -->
+
+    </div><!-- /container -->
+
+</div><!-- /headerwrap -->
+
+<div class="container" id="bottom">
+    <div class="row mt centered">
+        <div class="col-lg-6 col-lg-offset-3">
+            <h1>Suggestions:</h1>
+        </div>
+    </div><!-- /row -->
+</div>
+
+    <div id="foodContainer" class="row mt centered">
+
+    </div><!-- /row -->
+</div><!-- /container -->
+<script language="javascript" type="text/javascript" src="static/js/mainJs.js"></script>
+
+</body>
+</html>
