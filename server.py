@@ -41,7 +41,7 @@ if __name__ == "__main__":
     if system() == "Windows":
         port = 8888
     else:
-        port = 80
+        port = 8080
     app = make_app()
     app.listen(port)
     tornado.ioloop.IOLoop.current().start()
