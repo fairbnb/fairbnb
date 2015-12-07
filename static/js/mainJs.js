@@ -65,21 +65,28 @@ var jqxhr = $.get( "/search", function(data) {
 jqxhr.always(function(data) {
   alert( "second finished" );
     alert(data);
-        alert (data);
+
+            alert("hi1");
 
     var checkOut = document.getElementById("CheckOut").value;
     checkIn = checkIn + ' 00:00:00';
     checkOut = checkOut + ' 00:00:00';
     checkIn = moment(checkIn).unix();
     checkOut = moment(checkOut).unix();
+            alert("hi2");
+
     checkIn += 86400;
     checkOut += 86400;
 
     document.getElementById("in").innerHTML = checkIn;
+            alert("hi3");
+
     document.getElementById("out").innerHTML = checkOut;
+            alert("hi4");
+
 
         var inner = "";
-        alert("hi");
+        alert("hi5");
         $.each(data,function(i, value)
         {
             alert("get request");
