@@ -6,7 +6,8 @@ import json
 import pandas as pd
 import numpy
 
-MAX_RESULTS = 15000
+MAX_RESULTS = 12000
+RADIUS = '40'
 
 def buildDB(lat = '40.758895', long = '-73.9829423',dbName = "./static/data/temp.p"):
 
@@ -22,7 +23,7 @@ def buildDB(lat = '40.758895', long = '-73.9829423',dbName = "./static/data/temp
     headers = { 'X-Mashape-Key' : xmashkey , 'Accept' : accept}
     values = {'latitude' : str(lat),
               'longitude' : str(long),
-              'maxdistance':'80',
+              'maxdistance':RADIUS,
               'page':str(page),
               'resultsperpage':'50',
               'provider': 'airbnb'
@@ -66,7 +67,9 @@ def buildDB(lat = '40.758895', long = '-73.9829423',dbName = "./static/data/temp
     finally:
         df.reset_index(inplace=1)
         print(df.info())
+        print("saving pickle big")
         df.to_pickle(dbName)
+        df.clea
 
 
 def cleanDb(path, newPath):
