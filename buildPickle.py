@@ -67,17 +67,21 @@ def buildDB(lat = '40.758895', long = '-73.9829423',dbName = "./static/data/temp
     finally:
         df.reset_index(inplace=1)
         print(df.info())
-        print("saving pickle big")
+        print("saving big pickle")
         df.to_pickle(dbName)
-        df.clea
+        print("done saving big pickle")
 
 
 def cleanDb(path, newPath):
     df = pd.DataFrame(pd.read_pickle(path))
+    print('clearing db')
     toDelete = ['attr', 'priceRange', 'photos', 'location', 'provider', 'amenities', 'reviews', 'latLng', 'itemStatus']
     for i in toDelete:
         df.pop(i)
+    print("done clearing db")
+    print("saving small pickle")
     df.to_pickle(newPath)
+    print("done saving small pickle")
     return df
 
 def removeTooEarly(df, date):
