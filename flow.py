@@ -30,7 +30,8 @@ def userQuery(start_date, end_date):
         row = df.loc[value['name']]
         imurl = row['photos'] = ['large']
         href = row['provider'] = ['url']
-        result[index]['imurl':imurl, 'href':href]
+        result[index]['imurl']=imurl
+        result[index]['href']= href
     print(result)
 
 if __name__ == '__main__':
