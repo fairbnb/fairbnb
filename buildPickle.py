@@ -60,13 +60,13 @@ def buildDB(lat = '40.758895', long = '-73.9829423',dbName = "./static/data/temp
                 print(count)
                 df = pd.concat([df, pd.DataFrame(batch['result'])])
     finally:
+        df.reset_index(inplace=1)
         print(df.info())
         df.to_pickle(dbName)
 
 
-def cleanDataFrame(path, newPath):
+def cleanDb(path, newPath):
     df = pd.DataFrame(pd.read_pickle(path))
-    df.reset_index(inplace=1)
     toDelete = ['attr', 'priceRange', 'photos', 'location', 'provider', 'amenities', 'reviews', 'latLng', 'itemStatus']
     for i in toDelete:
         df.pop(i)
@@ -115,5 +115,8 @@ def readPickle(path):
     return pd.DataFrame(pd.read_pickle(path))
 
 if __name__ == '__main__':
-    buildDB(dbName='./static/data/newNY.p')
+    bigDb = './static/data/newNY.p'
+    smallDb = './static/data/newNY_min.p'
+    buildDB(dbName=bigDb)
+    cleanDb(bigDb, smallDb)
 
