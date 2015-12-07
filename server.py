@@ -21,9 +21,9 @@ class searchHandler(tornado.web.RequestHandler):
         result = json.dumps(flow.userQuery())
         for i in result:
             print(i)
-        self.write(result)
+        result = json.dumps(result)
         print("sent")
-        self.finish()
+        self.finish(result)
         print('after finish')
 
 # class getInfo(tornado.web.RequestHandler):
