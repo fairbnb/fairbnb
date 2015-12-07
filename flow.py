@@ -22,8 +22,8 @@ def userQuery(start_date, end_date):
 
 if __name__ == '__main__':
     if len(argv) == 3:
-        start = argv[1]
-        end = argv[2]
+        start = int(argv[1])
+        end = int(argv[2])
     else:
         start = 1449496184 + DAY
         end = start + 40*DAY
