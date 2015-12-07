@@ -1,9 +1,11 @@
 from buildPickle import *
 from dateFuctions import *
 from graphBuilder import *
+from sys import argv
 
 BIG_DF = './static/data/newNY.p'
 WORK_DF = './static/data/newNY_min.p'
+
 
 
 def userQuery(start_date, end_date):
@@ -19,7 +21,11 @@ def userQuery(start_date, end_date):
 
 
 if __name__ == '__main__':
-    start = 1449496184
-    end = start + 60*DAY
-    userQuery(start + DAY, end)
+    if len(argv) == 3:
+        start = argv[1]
+        end = argv[2]
+    else:
+        start = 1449496184 + DAY
+        end = start + 40*DAY
+    userQuery(start, end)
 
