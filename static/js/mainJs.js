@@ -25,6 +25,8 @@ $('#submitSearch').click(function()
         var inner = "";
         $.each(res["results"],function(i, value)
         {
+            alert("get request")
+            alert(value)
             inner += "<div class='row'><div class='col-lg-12' align='center'><h4>" + value.sdate + "</h4></div></div>";
             inner += "<div class='row'><div class='col-lg-5' align='right'><div class='row'><h4>" + value.name + "</h4></div><div class='row'><h4>" + value.price + "</h4></div></div><div class='col-lg-7' align='left'><img src='" + value.imurl + "' width='180' height='160' alt=''/></div></div>"
         });

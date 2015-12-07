@@ -19,9 +19,12 @@ class searchHandler(tornado.web.RequestHandler):
     def get(self):
         print("search handler")
         result = json.dumps(flow.userQuery())
+        for i in result:
+            print(i)
         self.write(result)
         print("sent")
         self.finish()
+        print('after finish')
 
 # class getInfo(tornado.web.RequestHandler):
 #     def get(self, *args, **kwargs):

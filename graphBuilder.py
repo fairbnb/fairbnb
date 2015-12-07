@@ -206,7 +206,4 @@ def returnResultIds(results, graph):
             addition = listing['price']
         price += addition
         cost += addition
-    for section in stops:
-        print(section)
-    print("total cost = " + str(cost))
     return stops
