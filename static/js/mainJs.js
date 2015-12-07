@@ -64,8 +64,8 @@ var jqxhr = $.get( "/search", function(data) {
 // Set another completion function for the request above
 jqxhr.always(function(data) {
   alert( "second finished" );
-    alert(data)
-        alert (data)
+    alert(data);
+        alert (data);
 
     var checkOut = document.getElementById("CheckOut").value;
     checkIn = checkIn + ' 00:00:00';
@@ -79,11 +79,11 @@ jqxhr.always(function(data) {
     document.getElementById("out").innerHTML = checkOut;
 
         var inner = "";
-        alert("hi")
+        alert("hi");
         $.each(data,function(i, value)
         {
-            alert("get request")
-            alert(value)
+            alert("get request");
+            alert(value);
             inner += "<div class='row'><div class='col-lg-12' align='center'><h4>" + value.sdate + "</h4></div></div>";
             inner += "<div class='row'><div class='col-lg-5' align='right'><div class='row'><h4>" + value.name + "</h4></div><div class='row'><h4>" + value.price + "</h4></div></div><div class='col-lg-7' align='left'><img src='" + value.imurl + "' width='180' height='160' alt=''/></div></div>"
         });
