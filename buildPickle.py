@@ -54,6 +54,8 @@ def buildDB(lat = '40.758895', long = '-73.9829423',dbName = "./static/data/temp
             data = data.encode('ascii')
             req = urllib.request.Request(url , headers=headers)
             with urllib.request.urlopen(req) as response:
+                if count>=1700:
+                    break
                 batch = json.loads(response.read().decode('utf-8'))
                 moreResults =  len(batch['result'])
                 count+=moreResults
@@ -119,4 +121,3 @@ if __name__ == '__main__':
     smallDb = './static/data/newNY_min.p'
     buildDB(dbName=bigDb)
     cleanDb(bigDb, smallDb)
-
