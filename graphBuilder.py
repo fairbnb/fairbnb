@@ -209,3 +209,4 @@ def returnResultIds(results, graph):
     for section in stops:
         print(section)
     print("total cost = " + str(cost))
+    return stops
