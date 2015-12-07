@@ -41,13 +41,15 @@ $('#submitSearch').click(jqxhr
 
 var jqxhr = $.get( "/search", function(res) {
   alert( "success" );
+    alert('printing res')
     alert (res)
     var checkIn = document.getElementById("CheckIn").value;
     var checkOut = document.getElementById("CheckOut").value;
     document.getElementById("in").innerHTML = checkIn;
     document.getElementById("out").innerHTML = checkOut;
     var inner = "";
-        $.each(res["results"],function(i, value)
+        var res2 = $.parseJSON(res)
+        $.each(res2["results"],function(i, value)
         {
             alert("get request")
             alert(value)
