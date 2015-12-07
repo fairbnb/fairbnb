@@ -6,7 +6,7 @@ import json
 import pandas as pd
 import numpy
 
-def buildDB(lat = '40.758895', long = '-73.9829423',dbName = "temp.p"):
+def buildDB(lat = '40.758895', long = '-73.9829423',dbName = "./static/data/temp.p"):
 
     moreResults = 1;
 
@@ -113,3 +113,7 @@ def clearNotAvailables(df):
 
 def readPickle(path):
     return pd.DataFrame(pd.read_pickle(path))
+
+if __name__ == '__main__':
+    buildDB(dbName='./static/data/newNY.p')
+
