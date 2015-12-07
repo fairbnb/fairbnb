@@ -23,9 +23,14 @@ def userQuery(start_date, end_date):
     print("F")
     result = nx.dijkstra_path(my_graph, source='start', target='end')
     print("G")
-    for i in returnResultIds(result, my_graph):
-        print(i)
-    print("H")
+    df.set_index('id', inplace=1)
+    result = returnResultIds(result, my_graph)
+    for index, value in enumerate(result):
+        row = df.loc[value]
+        imurl = row['photos']['large']
+        href = row['provider']['url']
+        result[index]['imurl':imurl, 'href':href]
+    print(result)
 
 if __name__ == '__main__':
     if len(argv) == 3:
@@ -35,4 +40,3 @@ if __name__ == '__main__':
         start = 1449496184 + DAY
         end = start + 40*DAY
     userQuery(start, end)
-

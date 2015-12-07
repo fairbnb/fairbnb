@@ -193,9 +193,7 @@ def returnResultIds(results, graph):
             newID = listing['id']
             if(lastID!=0):
                 result = {}
-                imurl = listing['photos'][0]['large']
-                href = listing['provider']['url']
-                result['imurl':imurl, 'href':href, 'name':lastID, 'price':price, 'sdate':startDate, 'edate':newDate]
+                result['name':lastID, 'price':price, 'sdate':startDate, 'edate':newDate]
                 stops.append(result)
             lastID = newID
             startDate = newDate
