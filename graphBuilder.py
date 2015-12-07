@@ -1,7 +1,6 @@
 import networkx as nx
 import pandas as pd
 from buildPickle import *
-import matplotlib.pyplot as plt
 import threading
 from dateFuctions import *
 
