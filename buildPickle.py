@@ -146,7 +146,7 @@ def cleanDbFromPath(path, newPath):
 
 def cleanDbFromDf(df, newPath):
     print('clearing db')
-    toDelete = ['attr', 'priceRange', 'location', 'provider', 'amenities', 'reviews', 'latLng', 'itemStatus']
+    toDelete = ['attr', 'priceRange', 'location', 'amenities', 'reviews', 'latLng', 'itemStatus']
     for i in toDelete:
         df.pop(i)
     print("done clearing db")

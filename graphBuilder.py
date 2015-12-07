@@ -178,3 +178,37 @@ def printResultPath(result, myGraph):
     for section in stops:
         print(section)
     print("total cost = " + str(cost))
+
+def returnResultIds(results, graph):
+    lastID = 0
+    startDate = 0
+    price = 0
+    cost = 0
+    stops = []
+    curDate = 0
+    for day in (range(1, len(results))):
+        listing = graph.node[results[day]]
+        if lastID != listing['id']:
+            newDate = listing['date']
+            newID = listing['id']
+            if(lastID!=0):
+                result = {}
+                imurl = listing['photos'][0]['large']
+                href = listing['provider']['url']
+                result['imurl':imurl, 'href':href, 'name':lastID, 'price':price, 'sdate':startDate, 'edate':newDate]
+                stops.append(result)
+            lastID = newID
+            startDate = newDate
+            price = 0
+        oldDate = curDate
+        curDate = listing['date']
+        days = (curDate - oldDate) / DAY
+        if days != 1:
+            addition = listing['priceweek']
+        else:
+            addition = listing['price']
+        price += addition
+        cost += addition
+    for section in stops:
+        print(section)
+    print("total cost = " + str(cost))

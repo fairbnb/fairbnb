@@ -10,15 +10,22 @@ WORK_DF = './static/data/newNY_min.p'
 
 def userQuery(start_date, end_date):
     # filter Data frame
+    print("A")
     df = readPickle(WORK_DF)
+    print("B")
     df = removeTooEarly(df, start_date)
+    print("C")
     df = removeTooLate(df, end_date + 14*DAY)
+    print("D")
     df = clearNotAvailables(df)
-
+    print("E")
     my_graph = buildGraph(df, start_date, end_date)
+    print("F")
     result = nx.dijkstra_path(my_graph, source='start', target='end')
-    printResultPath(result, my_graph)
-
+    print("G")
+    for i in returnResultIds(result, my_graph):
+        print(i)
+    print("H")
 
 if __name__ == '__main__':
     if len(argv) == 3:
