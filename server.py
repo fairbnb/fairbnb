@@ -5,6 +5,7 @@ import tornado.web
 import json
 import os
 import random
+from platform import system
 
 import flow
 
@@ -37,6 +38,10 @@ def make_app():
 
 
 if __name__ == "__main__":
+    if system() == "Windows":
+        port = 8888
+    else:
+        port = 80
     app = make_app()
-    app.listen(8888)
+    app.listen(port)
     tornado.ioloop.IOLoop.current().start()
