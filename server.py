@@ -22,6 +22,7 @@ class searchHandler(tornado.web.RequestHandler):
         for i in result:
             print(i)
         result = json.dumps(result)
+        result = {'results':result}
         print("sent")
         self.finish(result)
         print('after finish')
