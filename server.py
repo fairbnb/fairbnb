@@ -6,9 +6,15 @@ import json
 import os
 import random
 
+import flow
+
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
         self.render("main.html")
+
+class searchHandler(tornado.web.RequestHandler):
+    def get(self):
+        print(flow.userQuery())
 
 class getInfo(tornado.web.RequestHandler):
     def get(self, *args, **kwargs):
@@ -25,7 +31,8 @@ settings = dict(
 
 def make_app():
     return tornado.web.Application([
-        (r"/", MainHandler)
+        (r"/", MainHandler),
+        (r"/search", searchHandler)
     ], **settings)
 
 

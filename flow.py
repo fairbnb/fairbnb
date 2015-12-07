@@ -8,7 +8,7 @@ WORK_DF = './static/data/newNY_min.p'
 
 
 
-def userQuery(start_date, end_date):
+def userQuery(start_date = 1449496184, end_date = 1452952184):
     # filter Data frame
     print("A")
     df = readPickle(WORK_DF)
@@ -32,7 +32,7 @@ def userQuery(start_date, end_date):
         href = row['provider']['url']
         result[index]['imurl']=imurl
         result[index]['href']= href
-    print(result)
+    return result
 
 if __name__ == '__main__':
     if len(argv) == 3:
