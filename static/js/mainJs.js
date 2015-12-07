@@ -48,11 +48,12 @@ var jqxhr = $.get( "/search", function(res) {
     document.getElementById("in").innerHTML = checkIn;
     document.getElementById("out").innerHTML = checkOut;
     var inner = "";
-        var res2 = $.parseJSON(res)
+        var res2 = $.parseJSON(res);
+        alert(res2);
         $.each(res2["results"],function(i, value)
         {
-            alert("get request")
-            alert(value)
+            alert("get request");
+            alert(value);
             inner += "<div class='row'><div class='col-lg-12' align='center'><h4>" + value.sdate + "</h4></div></div>";
             inner += "<div class='row'><div class='col-lg-5' align='right'><div class='row'><h4>" + value.name + "</h4></div><div class='row'><h4>" + value.price + "</h4></div></div><div class='col-lg-7' align='left'><img src='" + value.imurl + "' width='180' height='160' alt=''/></div></div>"
         });
