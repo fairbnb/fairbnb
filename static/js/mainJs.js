@@ -39,8 +39,9 @@ $('#submitSearch').click(jqxhr
 ////}
 );
 
-var jqxhr = $.get( "/search", function() {
+var jqxhr = $.get( "/search", function(data) {
   alert( "success" );
+    alert (data)
 })
   .done(function() {
     alert( "second success" );
