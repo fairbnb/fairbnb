@@ -28,8 +28,8 @@ def userQuery(start_date, end_date):
     print("H")
     for index, value in enumerate(result):
         row = df.loc[value['name']]
-        imurl = row['photos'] = ['large']
-        href = row['provider'] = ['url']
+        imurl = row['photos'] = row['large']
+        href = row['provider'] = row['url']
         result[index]['imurl']=imurl
         result[index]['href']= href
     print(result)
