@@ -23,6 +23,7 @@ $('#submitSearch').click(function()
 
     $.get( "/search", { checkIn: checkIn, checkOut: checkOut } ,function(res){
         var inner = "";
+        alert("hi")
         $.each(res["results"],function(i, value)
         {
             alert("get request")
@@ -32,6 +33,7 @@ $('#submitSearch').click(function()
         });
         document.getElementById("resultContainer").innerHTML=inner;
     });
+    alert("bi")
 
 });
 
