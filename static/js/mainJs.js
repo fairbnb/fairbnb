@@ -14,12 +14,17 @@ $('#submitSearch').click(function()
     checkOut += 86400;
 
     $.get( "/search", { checkIn: checkIn, checkOut: checkOut } ,function(res){
+        var listings = $.parseJSON(res);
+        var jsonLen = listings.length;
         var inner = "";
-        $.each(res["results"],function(i, value)
-        {
-            inner += "<div class='row'><div class='col-lg-12' align='center'><h4>" + value.sdate + "</h4></div></div>";
-            inner += "<div class='row'><div class='col-lg-5' align='right'><div class='row'><h4>" + value.name + "</h4></div><div class='row'><h4>" + value.price + "</h4></div></div><div class='col-lg-7' align='left'><img src='" + value.imurl + "' width='180' height='160' alt=''/></div></div>"
-        });
+        var price;
+        var curRes;
+        for (var i = 0; i < jsonLen; i++){
+                curRes = listings[i];
+                inner += "<div class='row'><div class='col-lg-12' align='center'><h4>" + curRes['sdate'] + "</h4></div></div>";
+                inner += "<div class='row'><div class='col-lg-5' align='right'><div class='row'><h4>" + curRes['name'] + "</h4></div><div class='row'><h4>" + curRes['price'] + "</h4></div></div><div class='col-lg-7' align='left'><a href='"+curRes['href']+"' target='_blank'><img src='" + curRes['imurl'] + "' width='180' height='160' alt=''/></a></div></div>"
+        }
+        inner += "<div class='row'><div class='col-lg-12' align='center'><h4>" + listings[jsonLen-1]['edate'] + "</h4></div></div>";
         document.getElementById("resultContainer").innerHTML=inner;
     });
 

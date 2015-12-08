@@ -22,12 +22,12 @@ class searchHandler(tornado.web.RequestHandler):
         checkout = self.get_argument("checkOut")
         print(dateFuctions.printTime(checkin))
         print(dateFuctions.printTime(checkout))
-        # result = flow.userQuery()
-        # for i in result:
-        #     print(i)
-        # result = json.dumps(result)
+        result = flow.userQuery(checkin, checkout)
+        for i in result:
+            print(i)
+        result = json.dumps(result)
         # result = {'results':result}
-        self.finish()
+        self.finish(result)
         print('after finish')
 
 # class getInfo(tornado.web.RequestHandler):
