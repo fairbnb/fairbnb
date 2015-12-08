@@ -1,11 +1,9 @@
 import time
 
 def printTime(unix):
-    mytime = time.gmtime(unix)
+    mytime = time.gmtime(int(unix))
     return time.strftime("%a, %d %m %Y", mytime)
 
-def isWeekend(date):
-    pass
 
 def printAllDates(df):
     for index, row in df.iterrows():
