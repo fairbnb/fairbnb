@@ -13,9 +13,6 @@ $('#submitSearch').click(function()
     checkIn += 86400;
     checkOut += 86400;
 
-    document.getElementById("in").innerHTML = checkIn;
-    document.getElementById("out").innerHTML = checkOut;
-
     $.get( "/search", { checkIn: checkIn, checkOut: checkOut } ,function(res){
         var inner = "";
         $.each(res["results"],function(i, value)

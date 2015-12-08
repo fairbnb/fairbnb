@@ -32,6 +32,8 @@ h4 {
     font-size: 30px;
 }
 
+
+
 /* Paragraph & Typographic */
 p {
     line-height: 28px;
@@ -172,3 +174,15 @@ i {
     transition: all 0.3s ease-in-out;
 }
 
+.dateArea {
+    display: block;
+    padding: 10px;
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+.buttonArea {
+    display: block;
+    padding: 10px;
+    text-align: justify;
+}
