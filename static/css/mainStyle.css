@@ -162,6 +162,8 @@ i {
     right: auto;
     left: auto;
 }
+
+
 .floater:hover{
     margin-top: -10px;
     -webkit-transition: all 0.3s ease-in-out;
