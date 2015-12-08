@@ -50,25 +50,31 @@
         </div>
     </div><!-- /row -->
 
-    <div class="row">
-        <div class="col-lg-6" align="right">
-            <form action="action_page.php">
-                Check In:
-                <input type="date" id="CheckIn" name="checkIn" height="700px">
-            </form>
-        </div>
-        <div class="col-lg-6" align="left">
-            <form action="action_page.php">
-                Check Out:
-                <input type="date" id="CheckOut" name="checkOut">
-            </form>
+    <div class="dateArea">
+        <div class="row">
+            <div class="col-lg-5" align="right">
+                <form action="action_page.php">
+                    Check In:
+                    <input type="date" id="CheckIn" name="checkIn" height="700px">
+                </form>
+            </div>
+            <div class="col-lg-2"></div>
+            <div class="col-lg-5" align="left">
+                <form action="action_page.php">
+                    Check Out:
+                    <input type="date" id="CheckOut" name="checkOut">
+                </form>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-12" align="center">
-            <!--<form action="action_page.php">-->
-                <button type="submit" id="submitSearch" class="btn btn-warning btn-lg btn-circle-lg">GO!</button>
-            <!--</form>-->
+
+    <div class="buttonArea">
+        <div class="row">
+            <div class="col-lg-12" align="center">
+                <!--<form action="action_page.php">-->
+                    <button type="submit" id="submitSearch" class="btn btn-warning btn-lg btn-circle-lg">GO!</button>
+                <!--</form>-->
+            </div>
         </div>
     </div>
 </div>
@@ -79,8 +85,6 @@
 
 <div class="modal">
 </div>
-<p id="in"></p>
-<p id="out"></p>
 
 </body>
 </html>
