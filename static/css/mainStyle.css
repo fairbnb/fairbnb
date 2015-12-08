@@ -12,7 +12,7 @@ body {
 
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
     font-weight: 300;
     color: #333;
 }
@@ -27,9 +27,9 @@ h3 {
 }
 
 h4 {
-    color: #95a5a6;
+    color: #797979;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 30px;
 }
 
 /* Paragraph & Typographic */
@@ -120,8 +120,8 @@ i {
 
 /* HeaderWrap */
 #headerwrap {
-    background-image: ;
-    background-color: #3498db;
+    /*background-image: url("/static/img/arrow-01.png");*/
+    background-color: #ffd777;
     margin-top: -20px;
     padding-top:200px;
     /*background-attachment: relative;*/
@@ -150,6 +150,10 @@ i {
     font-size: 45px;
     font-weight: 300;
     letter-spacing: 1px;
+}
+
+#headerwrap img {
+    margin-bottom: 1%;
 }
 
 #headerwrap a{
