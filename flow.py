@@ -12,22 +12,20 @@ def userQuery(start_date = 1449496184, end_date = 1452952184):
     start_date = int(start_date)
     end_date = int(end_date)
     # filter Data frame
-    print("A")
     df = readPickle(WORK_DF)
-    print("B")
+    print('removing too early')
     df = removeTooEarly(df, start_date)
-    print("C")
+    print("removing too late")
     df = removeTooLate(df, end_date + 14*DAY)
-    print("D")
+    print("clearing none availables")
     df = clearNotAvailables(df)
-    print("E")
+    print("building graph")
     my_graph = buildGraph(df, start_date, end_date)
-    print("F")
+    print("running A*")
     result = nx.dijkstra_path(my_graph, source='start', target='end')
-    print("G")
+    print("returning result")
     df.set_index('id', inplace=1)
     result = returnResultIds(result, my_graph)
-    print("H")
     for index, value in enumerate(result):
         row = df.loc[value['name']]
         imurl = row['photos'][0]['large']

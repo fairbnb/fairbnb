@@ -192,6 +192,7 @@ def returnResultIds(results, graph):
             newDate = listing['date']
             newID = listing['id']
             if(lastID!=0):
+                price = gbp_to_usd(price)
                 result = {'name':lastID, 'price':price, 'sdate':printTime(startDate), 'edate':printTime(newDate)}
                 stops.append(result)
             lastID = newID
@@ -207,3 +208,7 @@ def returnResultIds(results, graph):
         price += addition
         cost += addition
     return stops
+
+def gbp_to_usd(gbp):
+    rate = 1.4997
+    return int(gpb * 1.4997)

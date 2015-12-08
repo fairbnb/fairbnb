@@ -5,7 +5,6 @@ import tornado.ioloop
 import tornado.web
 import json
 import os
-import random
 from platform import system
 
 import flow
@@ -20,23 +19,15 @@ class searchHandler(tornado.web.RequestHandler):
         print("search handler")
         checkin = self.get_argument("checkIn")
         checkout = self.get_argument("checkOut")
-        print(dateFuctions.printTime(checkin))
-        print(dateFuctions.printTime(checkout))
+        print("query from: " + dateFuctions.printTime(checkin))
+        print("query until: " + dateFuctions.printTime(checkout))
         result = flow.userQuery(checkin, checkout)
         for i in result:
             print(i)
         result = json.dumps(result)
         # result = {'results':result}
         self.finish(result)
-        print('after finish')
-
-# class getInfo(tornado.web.RequestHandler):
-#     def get(self, *args, **kwargs):
-#         (movie_name, movie_image) = movies[random.randrange(20)]
-#         (food_name, food_image) = foods[random.randrange(20)]
-#         json_dict = {"movieId": random.randrange(5), "movieName": movie_name, "movieImage": movie_image,
-#                      "recipeId": random.randrange(5), "recipeName": food_name, "recipeImage": food_image}
-#         self.finish(json.dump(json_dict, self))
+        print('sent result')
 
 settings = dict(
     static_path=os.path.join(os.path.dirname(__file__), "static")
