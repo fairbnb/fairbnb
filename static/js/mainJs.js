@@ -21,19 +21,14 @@ $('#submitSearch').click(function()
         var curRes;
         for (var i = 0; i < jsonLen; i++){
                 curRes = listings[i];
-                inner += "<div class='row'><div class='col-lg-12' align='center'><h4>" + curRes['sdate'] + "</h4></div></div>";
-                inner += "<div class='row'><div class='col-lg-5' align='right'><div class='row'><h4>" + curRes['name'] + "</h4></div><div class='row'><h4>" + curRes['price'] + "</h4></div></div><div class='col-lg-7' align='left'><a href='"+curRes['href']+"' target='_blank'><img src='" + curRes['imurl'] + "' width='180' height='160' alt=''/></a></div></div>"
+                inner += "<div class='row'><div class='col-lg-12' align='center' style='margin-bottom: 20px'><h6>" + curRes['sdate'] + "</h6></div></div>";
+                inner += "<div class='row'><div class='col-lg-5' align='right' style='margin-top: 45px'><div class='row'><h4>$" + curRes['price'] + "</h4></div></div><div class='col-lg-7' align='left' style='margin-bottom: 20px'><a href='"+curRes['href']+"' target='_blank'><img class='img-circle' src='" + curRes['imurl'] + "' width='180' height='160' alt=''/></a></div></div>"
         }
-        inner += "<div class='row'><div class='col-lg-12' align='center'><h4>" + listings[jsonLen-1]['edate'] + "</h4></div></div>";
+        inner += "<div class='row'><div class='col-lg-12' align='center'><h6>" + listings[jsonLen-1]['edate'] + "</h6></div></div>";
         document.getElementById("resultContainer").innerHTML=inner;
     });
 
 });
-
-//$('#arrow').bind('mouseenter', function(){
-//    alert('hi');
-//    $('#arrow').animate({up:"10"});
-//});
 
 
 $('#scrollDown').click(function(){
@@ -44,17 +39,7 @@ $('#scrollDown').click(function(){
 });
 
 
-//function result()
-//{
-//    var inner = "";
-//    $.each(res["results"],function(i, value)
-//    {
-//        inner += "<div class='row'><div class='col-lg-12' align='center'><h4>" + value.sdate + "</h4></div></div>";
-//        inner += "<div class='row'><div class='col-lg-5' align='right'><div class='row'><h4>" + value.name + "</h4></div><div class='row'><h4>" + value.price + "</h4></div></div><div class='col-lg-7' align='left'><img src='" + value.imurl + "' width='180' height='160' alt=''/></div></div>"
-//    });
-//    document.getElementById("resultContainer").innerHTML=inner;
-//}
-//
+
 $body = $("body");
 
 $(document).on({
@@ -64,6 +49,8 @@ $(document).on({
     },
     ajaxStop: function() {
         $body.removeClass("loading");
+
+        $('html, body').animate({scrollTop:950},1000);
     }
 });
 //result();
