@@ -1,6 +1,6 @@
 import urllib
 
-# import tornado
+import dateFuctions
 import tornado.ioloop
 import tornado.web
 import json
@@ -18,13 +18,16 @@ class MainHandler(tornado.web.RequestHandler):
 class searchHandler(tornado.web.RequestHandler):
     def get(self):
         print("search handler")
-        result = flow.userQuery()
-        for i in result:
-            print(i)
-        result = json.dumps(result)
-        result = {'results':result}
-        print("sent")
-        self.finish(result)
+        checkin = self.get_argument("checkIn")
+        checkout = self.get_argument("checkOut")
+        print(dateFuctions.printTime(checkin))
+        print(dateFuctions.printTime(checkout))
+        # result = flow.userQuery()
+        # for i in result:
+        #     print(i)
+        # result = json.dumps(result)
+        # result = {'results':result}
+        self.finish()
         print('after finish')
 
 # class getInfo(tornado.web.RequestHandler):
