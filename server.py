@@ -5,6 +5,7 @@ import tornado.ioloop
 import tornado.web
 import json
 import os
+import time
 from platform import system
 
 import flow
@@ -21,11 +22,15 @@ class searchHandler(tornado.web.RequestHandler):
         checkout = self.get_argument("checkOut")
         print("query from: " + dateFuctions.printTime(checkin))
         print("query until: " + dateFuctions.printTime(checkout))
-        result = flow.userQuery(checkin, checkout)
-        for i in result:
-            print(i)
-        result = json.dumps(result)
-        # result = {'results':result}
+        if checkin >= time.time():
+            result = flow.userQuery(checkin, checkout)
+            for i in result:
+                print(i)
+            result = json.dumps(result)
+            # result = {'results':result}
+        else:
+            self.set_status(404)
+            result = json.dumps("")
         self.finish(result)
         print('sent result')
 
