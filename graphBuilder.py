@@ -200,7 +200,7 @@ def returnResultIds(results, graph):
             price = 0
         oldDate = curDate
         curDate = listing['date']
-        days = (curDate - oldDate) / DAY
+        days = int((curDate - oldDate) / DAY)
         if days > 1:
             addition = listing['priceweek']
         else:
