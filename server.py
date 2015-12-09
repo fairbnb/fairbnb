@@ -22,7 +22,7 @@ class searchHandler(tornado.web.RequestHandler):
         checkout = self.get_argument("checkOut")
         print("query from: " + dateFuctions.printTime(checkin))
         print("query until: " + dateFuctions.printTime(checkout))
-        if checkin >= time.time():
+        if int(checkin) >= time.time():
             result = flow.userQuery(checkin, checkout)
             for i in result:
                 print(i)
