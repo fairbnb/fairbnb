@@ -154,7 +154,6 @@ def printResultPath(result, myGraph):
     price = 0
     cost = 0
     stops = []
-    print(result)
     curDate = 0
     for day in (range(1, len(result))):
         listing = myGraph.node[result[day]]
@@ -193,7 +192,8 @@ def returnResultIds(results, graph):
             newID = listing['id']
             if(lastID!=0):
                 price = gbp_to_usd(price)
-                result = {'name':lastID, 'price':price, 'sdate':printTime(startDate), 'edate':printTime(newDate)}
+                days = int((newDate - startDate)/DAY)
+                result = {'name':lastID, 'price':price, 'sdate':printTime(startDate), 'edate':printTime(newDate), 'days':days}
                 stops.append(result)
             lastID = newID
             startDate = newDate
@@ -211,4 +211,4 @@ def returnResultIds(results, graph):
 
 def gbp_to_usd(gbp):
     rate = 1.4997
-    return int(gbp * 1.4997)
+    return int(gbp * rate)
