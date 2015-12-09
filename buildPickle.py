@@ -7,7 +7,7 @@ import pandas as pd
 import numpy
 
 MAX_RESULTS = 12000
-RADIUS = '40'
+RADIUS = '25'
 
 def buildDB(lat = '40.758895', long = '-73.9829423',dbName = "./static/data/temp.p"):
 
