@@ -211,4 +211,4 @@ def returnResultIds(results, graph):
 
 def gbp_to_usd(gbp):
     rate = 1.4997
-    return int(gpb * 1.4997)
+    return int(gbp * 1.4997)
