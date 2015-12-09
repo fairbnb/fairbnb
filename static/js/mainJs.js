@@ -24,14 +24,14 @@ $('#submitSearch').click(function()
             curRes = listings[i]
             totalPrice += parseInt(curRes['price']);
             if (i%2){
-            inner += "<li><div class='timeline-badge'></div><div class='timeline-panel'><div class='timeline-heading'>"
-                   + "<h4 class='timeline-title'>"+curRes['sdate'] +" to " + curRes['edate']+"</h4></div><div class='timeline-body'><h4>"+curRes['days']+" days</h4><h4>$"+ curRes['price'] +"</h4>"
-                +"<a href='"+curRes['href']+"' target='_blank'><img class='img-rounded' src='" + curRes['imurl'] + "' width='180' height='160' alt=''/></a></div></div></li>";
+            inner += "<li><div class='timeline-badge'></div><a href='"+curRes['href']+"' target='_blank'><div class='timeline-panel'><div class='timeline-heading'>"
+                   + "<h4 class='timeline-title'>"+curRes['sdate'] +" - " + curRes['edate']+"</h4></div><div class='timeline-body'><h4>"+curRes['days']+" days</h4><h4>$"+ curRes['price'] +"</h4>"
+                +"<img class='img-rounded' src='" + curRes['imurl'] + "' width='180' height='160' alt=''/></a></div></div></li>";
             }
             else{
-                inner += "<li class='timeline-inverted'><div class='timeline-badge'></div><div class='timeline-panel'><div class='timeline-heading'>"
-                    + "<h4 class='timeline-title'>"+curRes['sdate'] +" to " + curRes['edate']+"</h4></div><div class='timeline-body'><h4>"+curRes['days']+" days</h4><h4>$"+ curRes['price'] +"</h4>"
-                    +"<a href='"+curRes['href']+"' target='_blank'><img class='img-rounded' src='" + curRes['imurl'] + "' width='180' height='160' alt=''/></a>";
+                inner += "<li class='timeline-inverted'><div class='timeline-badge'></div><a href='"+curRes['href']+"' target='_blank'><div class='timeline-panel'><div class='timeline-heading'>"
+                    + "<h4 class='timeline-title'>"+curRes['sdate'] +" - " + curRes['edate']+"</h4></div><div class='timeline-body'><h4>"+curRes['days']+" days</h4><h4>$"+ curRes['price'] +"</h4>"
+                    +"<img class='img-rounded' src='" + curRes['imurl'] + "' width='180' height='160' alt=''/></a>";
 
             }
 
