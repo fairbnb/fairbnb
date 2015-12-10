@@ -5,6 +5,8 @@
 *.iml
 out
 gen
+.pem
+.ppk
 *.p
 # Created by .ignore support plugin (hsz.mobi)
 __pycache__
