@@ -10,8 +10,8 @@ def buildGraph(listingsDF, startDate, endDate):
     startDate = toBaseDate(startDate)
     endDate = toBaseDate(endDate)
     graph = nx.DiGraph()
-    graph.add_node('start',id='start',date=startDate,price=0,jumpable=0)
-    graph.add_node('end',id = 'end',date=endDate,price=0,jumpable=0)
+    graph.add_node('start',id='start',date=startDate,price=0,jumpable=0, priceweek=0)
+    graph.add_node('end',id = 'end',date=endDate,price=0,jumpable=0, priceweek=0)
     numOfdays = int((endDate - startDate)/DAY + 1)
     hashtable = [[]]
     for i in range(numOfdays+1):
@@ -179,34 +179,34 @@ def printResultPath(result, myGraph):
     print("total cost = " + str(cost))
 
 def returnResultIds(results, graph):
-    lastID = 0
-    startDate = 0
-    price = 0
-    cost = 0
+    DAILY = 0
+    WEEKLY = 1
     stops = []
-    curDate = 0
-    for day in (range(1, len(results))):
-        listing = graph.node[results[day]]
-        if lastID != listing['id']:
-            newDate = listing['date']
-            newID = listing['id']
-            if(lastID!=0):
-                price = gbp_to_usd(price)
+    days = 0
+    lastId = 0
+    cost=0
+    curId = 0
+    startDate = 0
+    price = [0,0]
+    for node in range(1,len(results)):
+        listing = graph.node[results[node]]
+        if curId != listing['id']:
+            if curId == 0:
+                startDate = listing['date']
+                price[DAILY] = listing['price']
+                price[WEEKLY] = listing['priceweek']
+                curId = listing['id']
+            else:
+                newDate = listing['date']
                 days = int((newDate - startDate)/DAY)
-                result = {'name':lastID, 'price':price, 'sdate':printTime(startDate), 'edate':printTime(newDate), 'days':days}
+                curPrice = (days//7)*price[WEEKLY] + (days%7)*price[DAILY]
+                result = {'name':curId, 'price':curPrice, 'sdate':printTime(startDate), 'edate':printTime(newDate), 'days':days}
                 stops.append(result)
-            lastID = newID
-            startDate = newDate
-            price = 0
-        oldDate = curDate
-        curDate = listing['date']
-        days = int((curDate - oldDate) / DAY)
-        if days > 1:
-            addition = listing['priceweek']
-        else:
-            addition = listing['price']
-        price += addition
-        cost += addition
+                if listing['id'] != 0:
+                    startDate = listing['date']
+                    price[DAILY] = listing['price']
+                    price[WEEKLY] = listing['priceweek']
+                    curId = listing['id']
     return stops
 
 def gbp_to_usd(gbp):

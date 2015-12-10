@@ -24,8 +24,6 @@ class searchHandler(tornado.web.RequestHandler):
         print("query until: " + dateFuctions.printTime(checkout))
         if int(checkin) >= time.time():
             result = flow.userQuery(checkin, checkout)
-            for i in result:
-                print(i)
             result = json.dumps(result)
             # result = {'results':result}
         else:

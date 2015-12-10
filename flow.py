@@ -3,7 +3,6 @@ from dateFuctions import *
 from graphBuilder import *
 from sys import argv
 
-BIG_DF = './static/data/newNY.p'
 WORK_DF = './static/data/newNY_min.p'
 
 
