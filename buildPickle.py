@@ -187,7 +187,7 @@ def readPickle(path):
 
 if __name__ == '__main__':
     if len(argv) == 2:
-        smallDb = int(argv[1])
+        smallDb = argv[1]
     else:
         smallDb = './static/data/newNY_min.p'
     toSaveDf = buildDbOnServer()
