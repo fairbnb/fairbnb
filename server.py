@@ -15,6 +15,11 @@ class MainHandler(tornado.web.RequestHandler):
         print("main.html")
         self.render("main.html")
 
+class sheetsHandler(tornado.web.RequestHandler):
+    def get(self):
+        print("sheets handler")
+        self.redirect("https://docs.google.com/presentation/d/1FsLbbtWLhHNGdk60ctadGCanPxKEDlF2wC4mKFuo3Ck/present?slide=id.p")
+
 class searchHandler(tornado.web.RequestHandler):
     def get(self):
         print("search handler")
@@ -41,7 +46,8 @@ def make_app():
     print("make_app")
     return tornado.web.Application([
         (r"/", MainHandler),
-        (r"/search", searchHandler)
+        (r"/search", searchHandler),
+        (r"/sheets", sheetsHandler),
     ], **settings)
 
 
